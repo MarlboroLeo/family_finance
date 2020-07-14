@@ -1,0 +1,19 @@
+/* pages/target/target.wxss */
+.list {
+    display:flex;
+    flex-direction:row;
+    padding:10px 15px;
+    position: relative;
+}
+.icon {
+    width:20px;
+    height:20px;
+    border-radius:50%;
+}
+.name {
+    margin-left:5px;
+    font-size:15px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

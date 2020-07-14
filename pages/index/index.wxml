@@ -1,0 +1,30 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="userinfo">
+    <view class="userAvatar">
+      <open-data class="userAvatar" type="userAvatarUrl"></open-data>
+    </view>
+    <open-data type="userNickName" lang="zh_CN"></open-data>
+    欢迎回来
+  </view>
+  <view class="kind-list">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="kind-list-item">
+        <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+          <view class="kind-list-text">{{item.name}}</view>
+          <image class="kind-list-img" src="../../img/{{item.id}}.png"></image>
+        </view>
+        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+            <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="pageId">
+              <navigator url="../{{page.path}}/{{page.path}}?params={{page.pageId}}" class="navigator">
+                <view class="navigator-text">{{page.title}}</view>
+                <view class="navigator-arrow"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

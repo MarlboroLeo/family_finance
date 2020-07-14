@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="todoStatus">
+        <view wx:if="{{task.status == 0}}">
+            <image class="statusIcon" src="../../img/noStart.png"></image>
+        </view>
+        <view wx:if="{{task.status == 1}}">
+            <image class="statusIcon" src="../../img/ing.png"></image>
+        </view>
+        <view wx:if="{{task.status == 2}}">
+            <image class="statusIcon" src="../../img/success.png"></image>
+        </view>
+        <view wx:if="{{task.status == 3}}">
+            <image class="statusIcon" src="../../img/failure.png"></image>
+        </view>
+    </view>
+    <view class="name">{{task.name}}</view>
+    <view class="layout-inline">
+        <view class="title">开始时间</view>
+        <view class="info">{{task.startTime}}</view>
+    </view>
+    <view class="layout-inline">
+        <view class="title">结束时间</view>
+        <view class="info">{{task.endTime}}</view>
+    </view>
+    <view class="layout-inline">
+        <view class="title">执行频率</view>
+        <view class="info" wx:if="{{task.excRule=='everyDay'}}">每天</view>
+    </view>
+    <view class="layout-inline">
+        <view class="title">描述:</view>
+        <view class="info">{{task.content}}</view>
+    </view>
+    <view class="btn-area" id="buttonContainer">
+        <button size="default" type="primary" plain="true">完成</button>
+        <button size="default" type="detault" plain="true">修改</button>
+        <button size="default" type="warn" plain="true">删除</button>
+    </view>
+</view>

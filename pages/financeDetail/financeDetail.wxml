@@ -1,0 +1,40 @@
+<!-- pages/financeDetail/financeDetail.wxml -->
+<view class="page">
+    <view class="pageHd">
+        <view class="pageTitle">2020年7月度</view>
+        <view class="pageDesc">财务明细</view>
+    </view>
+    <view class="pageBd">
+        <view class="formPreview">
+            <view class="formPreviewHd">收入</view>
+            <view class="formPreviewItem" wx:for="{{financeDetailData.income}}" wx:for-item="income" wx:key="name">
+                <view class="formPreviewLabel">{{income.name}}</view>
+                <view class="formPreviewValue">¥{{income.value}}</view>
+            </view>
+            <view class="formPreviewHd">支出</view>
+            <view class="formPreviewItem" wx:for="{{financeDetailData.expenses}}" wx:for-item="expenses" wx:key="name">
+                <view class="formPreviewLabel">{{expenses.name}}</view>
+                <view class="formPreviewValue">¥{{expenses.value}}</view>
+            </view>
+            <view class="formPreviewHd">资产</view>
+            <view class="formPreviewItem" wx:for="{{financeDetailData.assets}}" wx:for-item="assets" wx:key="name">
+                <view class="formPreviewLabel">{{assets.name}}</view>
+                <view class="formPreviewValue">¥{{assets.value}}</view>
+            </view>
+            <view class="formPreviewHd">负债</view>
+            <view class="formPreviewItem" wx:for="{{financeDetailData.liabilities}}" wx:for-item="liabilities" wx:key="name">
+                <view class="formPreviewLabel">{{liabilities.name}}</view>
+                <view class="formPreviewValue">¥{{liabilities.value}}</view>
+            </view>
+            <view class="formPreviewHd">总计</view>
+            <view class="formPreviewItem">
+                <view class="formPreviewLabel">总收入</view>
+                <view class="formPreviewValue">¥{{totalIncome}}</view>
+                <view class="formPreviewLabel">总支出</view>
+                <view class="formPreviewValue">¥{{totalExpenses}}</view>
+                <view class="formPreviewLabel Total">现金流</view>
+                <view class="formPreviewValue Total">¥{{cashFlow}}</view>
+            </view>
+        </view>
+    </view>
+</view>

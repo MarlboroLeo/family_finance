@@ -1,0 +1,13 @@
+<!--pages/financeAnalyse/financeAnalyse.wxml-->
+<view class="container">
+    <view class="list">
+    <view class="li" wx:for="{{listData}}" wx:key="id" wx:for-index="index">
+      <view class="title">{{item.title}}</view>
+      <view class="graph" wx:if="{{item.tuData}}">
+        <ec-canvas id="graph-{{index}}" canvas-id="graph-{{index}}" class="canvas" tuData="{{item.tuData}}" ec="{{ec}}"></ec-canvas>
+      </view>
+    </view>
+  </view>
+</view>
+  
+

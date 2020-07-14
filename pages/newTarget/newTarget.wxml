@@ -1,0 +1,23 @@
+<form class="formSubmit" report-submit="false" bindsubmit="formSubmit">
+    <view class="layout-column">
+        <input class="border" type="text" placeholder="标题" maxlength="100" name="name"></input>
+        <view class="layout-column marUpTop">
+            <textarea class="broder desc marTop" placeholder="详细描述,包括目标内容、优先级" maxlength="1000" name="desc" />
+        </view>
+        <view class="layout-row">
+            <view class="gray">完成时限</view>
+            <picker class="date margin-left" name="finishDate" mode="date" value="{{initDate}}" start="{{initDate}}" end="{{initEndDate}}" bindchange="changeFinishDate">
+                <view class="picker-text">{{finishDate}}</view>
+            </picker>
+            <image class="img" src="../../img/right.png"></image>
+        </view>
+        <modal hidden="{{formMsgHidden}}" title="提示" confirm-text="去完善" no-cancel="true" bindcancel="cancel" bindconfirm="hiddenFormMsg">
+            <text>{{formMsg}}</text>
+        </modal>
+        <view class="border marTop">
+            <button type="primary" size="default" style="background-color: #7dd0e1;" formType="submit">
+                定目标
+            </button>
+        </view>
+    </view>
+</form>

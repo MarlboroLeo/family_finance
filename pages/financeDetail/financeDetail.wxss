@@ -1,0 +1,75 @@
+/* pages/financeDetail/financeDetail.wxss */
+page{
+    background-color: rgb(237, 246, 249);
+    font-size: 16px;
+}
+.pageHd{
+    padding: 40px;
+}
+.pageTitle{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+.pageDesc{
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+.formPreview{
+    margin-bottom: 25px;
+    position: relative;
+    background-color: #ffffff;
+}
+.formPreview:before{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1rpx solid #d9d9d9;
+    color: #d9d9d9;
+}
+.formPreview:after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1rpx solid #d9d9d9;
+    color: #d9d9d9;
+}
+.formPreviewHd{
+    font-size: 18px;
+    margin-left: 1em;
+    position: relative;
+    border-top: 1rpx solid #d9d9d9;
+}
+.formPreviewItem{
+    font-size: 16px;
+    overflow: hidden;
+}
+.formPreviewLabel{
+    float: left;
+    margin-right: 1em;
+    margin-left: 1em;
+    min-width: 4em;
+    color: #999999;
+    text-align: justify;
+    text-align-last: justify;
+}
+.formPreviewValue{
+    display: block;
+    word-break: normal;
+    word-wrap: break-word;
+    text-align: right;
+    margin-right: 1em;
+}
+.Total{
+    color: black;
+    font-size: 30px;
+    border-top: 1rpx solid #d9d9d9;
+}

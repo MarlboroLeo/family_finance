@@ -1,0 +1,20 @@
+<!-- pages/target/target.wxml -->
+<button type="primary" size="mini" style="background-color: #7dd0e1;" bindtap="buttonNavigate">+</button>
+<Tabs tabs="{{tabs}}" binditemChange="handleItemChange">
+    <block wx:if="{{tabs[0].isActive}}">
+    <view wx:for="{{unfinished}}" wx:for-item="unfinished" wx:key="id" wx:for-index="index">
+          <view class="list" style="background-color:{{index % 2 == 0 ? '#F6F6F6' : '#ffffff'}}" data-taskId="{{unfinished.id}}" bindtap="toTaskDetail">
+            <image src="/img/notStart.png" class="icon" data-taskId="{{unfinished.id}}"></image>
+            <text style="width:{{winWidth - 140}}px;" class="name" data-taskId="{{unfinished.id}}">{{unfinished.name}}</text>
+          </view> 
+        </view>
+    </block>
+    <block wx:else>
+        <view wx:for="{{finished}}" wx:for-item="finished" wx:key="id" wx:for-index="index">
+          <view class="list" style="background-color:{{index % 2 == 0 ? '#F6F6F6' : '#ffffff'}}" data-taskId="{{finished.id}}" bindtap="toTaskDetail">
+            <image  src="/img/done.png" class="icon" data-taskId="{{finished.id}}"></image>
+            <text style="width:{{winWidth - 140}}px;" class="name" data-taskId="{{finished.id}}">{{finished.name}}</text>
+          </view> 
+        </view>
+    </block>
+</Tabs>

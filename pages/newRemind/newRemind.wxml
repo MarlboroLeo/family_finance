@@ -1,0 +1,49 @@
+<form class="formSubmit" report-submit="false" bindsubmit="formSubmit">
+    <view class="layout-column">
+        <input class="border" type="text" placeholder="标题" maxlength="100" name="name"></input>
+        <view class="layout-column marUpTop">
+            <textarea class="broder desc marTop" placeholder="详细描述,包括提醒内容 紧急程度" maxlength="1000" name="desc" />
+        </view>
+        <view class="layout-row">
+            <view class="gray">开始时间</view>
+            <picker class="date margin-left" name="startDate" mode="date" value="{{initDate}}" start="{{initDate}}" bindchange="changeStartDate">
+                <view class="picker-text">{{startDate}}</view>
+            </picker>
+            <image class="img" src="../../img/right.png"></image>
+        </view>
+        <view class="layout-row">
+            <view class="gray">结束时间</view>
+            <picker class="date margin-left" name="endDate" mode="date" value="{{initDate}}" start="{{initDate}}" end="{{initEndDate}}" bindchange="changeEndDate">
+                <view class="picker-text">{{endDate}}</view>
+            </picker>
+            <image class="img" src="../../img/right.png"></image>
+        </view>
+        <view class="layout-row" bindtap="changeExcRule">
+            <view class="gray">重复</view>
+            <view class="excRule-text">{{excRule[excRuleIndex].name}}</view>
+            <image class="img" src="../../img/right.png"></image>
+        </view>
+        <modal class="excRule" hidden="{{excRuleHidden}}" title="请选择" no-cancel="true" confirm-text="选择" bindconfirm="confirmExcRule">
+            <radio-group class="layout-column" name="excRule">
+                <label class="marTop" wx:for="{{excRule}}" wx:for-item="rule" wx:for-index="r" wx:key="value">
+                    <radio data-num="{{r}}" bindtap="selectExcRule" value="{{rule.value}}" checked="{{r == excRuleIndex}}" />
+                    <text data-num="{{r}}" bindtap="selectExcRule">{{rule.name}}</text>
+                </label>
+            </radio-group>
+            <checkbox-group hidden="{{customizeWeekHidden}}" class="marTop" name="excRuleValue">
+            <label class="weeks" wx:for="{{weeks}}" wx:for-item="week" wx:for-index="index" wx:key="value">
+                <checkbox value="{{week.value}}"/>
+                <text bindtap="changeWeekColor" data-num="{{index}}" style="background-color: {{weeksColor[index]}}; margin-left: 15px; border-radius:50%;border:1px solid gray;padding: 3px 3px;color:{{weeksFontColor[index]}};">{{week.name}}</text>
+            </label>
+        </checkbox-group>
+        </modal>
+        <modal hidden="{{formMsgHidden}}" title="提示" confirm-text="去完善" no-cancel="true" bindcancel="cancel" bindconfirm="hiddenFormMsg">
+            <text>{{formMsg}}</text>
+        </modal>
+        <view class="border marTop">
+            <button type="primary" size="default" style="background-color: #7dd0e1;" disabled="{{disableHookBtn}}" formType="submit">
+                新建提醒
+            </button>
+        </view>
+    </view>
+</form>

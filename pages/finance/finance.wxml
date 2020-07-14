@@ -1,0 +1,102 @@
+<!-- pages/finance/finance.wxml -->
+<Tabs tabs="{{tabs}}" binditemChange="handleItemChange"></Tabs>
+<block wx:if="{{tabs[0].isActive}}">
+    <view class="kind-list">
+        <block wx:for="{{financeList}}" wx:key="id" wx:for-item="finance">
+            <view class="kind-list-item">
+                <view id="{{finance.id}}" class="kind-list-item-hd {{finance.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+                    <view class="kind-list-text">{{finance.name}}</view>
+                    <view class="navigator-arrow"></view>
+                </view>
+                <view class="kind-list-item-bd {{finance.open ? 'kind-list-item-bd-show' : ''}}">
+                    <view class="navigator-box {{finance.open ? 'navigator-box-show' : ''}}">
+                        <block wx:for="{{finance.statement}}" wx:key="statementId" wx:for-item="statement">
+                            <navigator url="../financeDetail/financeDetail?params={{statement.statementId}}" class="navigator">
+                                <view class="navigator-text">{{statement.date}}</view>
+                                <view class="navigator-arrow"></view>
+                            </navigator>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</block>
+<block wx:else>
+    <form class="formSubmit" report-submit="false" bindsubmit="formSubmit">
+        <view class="layout-column">
+            <view class="layout-row" bindtap="changeType">
+                <view class="gray">报表类型</view>
+                <view class="type-text">{{type[typeIndex].name}}</view>
+                <image class="img" src="../../img/right.png"></image>
+            </view>
+            <modal class="type" hidden="{{typeHidden}}" title="请选择报表类型" no-cancel="true" confirm-text="选择" bindconfirm="confirmType">
+                <radio-group class="layout-column" name="type">
+                    <label class="marTop" wx:for="{{type}}" wx:for-item="type" wx:for-index="r" wx:key="value">
+                        <radio data-num="{{r}}" bindtap="selectType" value="{{type.value}}" checked="{{r == typeIndex}}" />
+                        <text data-num="{{r}}" bindtap="selectType">{{type.name}}</text>
+                    </label>
+                </radio-group>
+            </modal>
+            <text class="income" selectable="false" space="false">收入</text>
+            <view class="layout-row">
+                <view class="gray">工资收入</view>
+                <input type="number" name="salary"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">被动收入</view>
+                <input type="number" name="passive"></input>
+            </view>
+            <text class="expenses" selectable="false" space="false">支出</text>
+            <view class="layout-row">
+                <view class="gray">生活支出</view>
+                <input type="number" name="lifePassive"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">房租支出</view>
+                <input type="number" name="rentPassive"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">交通支出</view>
+                <input type="number" name="trafficPassive"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">其他支出</view>
+                <input type="number" name="otherPassive"></input>
+            </view>
+            <text class="assets" selectable="false" space="false">资产</text>
+            <view class="layout-row">
+                <view class="gray">存款</view>
+                <input type="number" name="bank"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">股票</view>
+                <input type="number" name="stock"></input>
+            </view>
+            <text class="liabilities" selectable="false" space="false">负债</text>
+            <view class="layout-row">
+                <view class="gray">信用卡</view>
+                <input type="number" name="creditCard"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">贷款</view>
+                <input type="number" name="loans"></input>
+            </view>
+            <view class="layout-row">
+                <view class="gray">填写时间</view>
+                <picker class="date margin-left" name="writeDate" mode="date" value="{{initDate}}" start="{{initDate}}" bindchange="changeWriteDate">
+                    <view class="picker-text">{{writeDate}}</view>
+                </picker>
+                <image class="img" src="../../img/right.png"></image>
+            </view>
+            <modal hidden="{{formMsgHidden}}" title="提示" confirm-text="去完善" no-cancel="true" bindcancel="cancel" bindconfirm="hiddenFormMsg">
+                <text>{{formMsg}}</text>
+            </modal>
+            <view class="border marTop">
+                <button type="primary" size="default" style="background-color: #7dd0e1;" disabled="{{disableHookBtn}}" formType="submit">
+                    新建报表
+                </button>
+            </view>
+        </view>
+    </form>
+</block>
